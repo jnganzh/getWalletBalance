@@ -1,5 +1,8 @@
 # getWalletBalance
-Get ERC20 Token Balances for multiple chains using covalent api
+
+## Get ERC20 Token Balances for multiple chains using covalent api
+
+### How to use
 
 1. Fill up api key in CurrentTokenBalance.py
 
