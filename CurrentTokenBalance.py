@@ -2,7 +2,7 @@ import requests
 from collections import defaultdict
 import pandas as pd
 
-API_KEY = 'ckey_fa66af6461ae4cc2b20a4c70f2f'
+API_KEY = 'FILL YOUR OWN API KEY'
 
 
 class CurrentBalance:
