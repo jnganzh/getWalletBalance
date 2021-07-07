@@ -1,6 +1,4 @@
-# getWalletBalance
-
-## Get ERC20 Token Balances for multiple chains using covalent api
+# getWalletBalance -Get ERC20 Token Balances for multiple chains using covalent api
 
 ### How to use
 
