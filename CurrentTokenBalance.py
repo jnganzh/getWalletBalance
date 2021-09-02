@@ -20,7 +20,6 @@ class CurrentBalance:
             return data
 
     def _getDate(self):
-
         url = f'https://api.covalenthq.com/v1/1/address/{self.address_lst[0]}/balances_v2/?key={API_KEY}'
         r = requests.get(url)
         updated_at = r.json()['data']['updated_at'][:10]
@@ -34,10 +33,16 @@ class CurrentBalance:
 
         for wallet in self.address_lst:
             for chain in self.chain_lst.keys():
-
-                url = f'https://api.covalenthq.com/v1/{chain}/address/{wallet}/balances_v2/?key={API_KEY}'
-                r = requests.get(url)
-                data = r.json()['data']['items']
+                counter = 10
+                while counter < 10:
+                    try:
+                        url = f'https://api.covalenthq.com/v1/{chain}/address/{wallet}/balances_v2/?key={API_KEY}'
+                        r = requests.get(url)
+                        data = r.json()['data']['items']
+                        break
+                    except Exception:
+                        counter+=1
+                        continue
 
                 for item in data:
                     if float(item['balance']) > 0:
@@ -64,7 +69,6 @@ class CurrentBalance:
     def getCurrentBalances(self):
 
         token_df = self._getTokens()
-
         token_df = token_df.groupby(
             ['chain', 'contract_name', 'contract_ticker_symbol', 'contract_address']).sum().reset_index()
         token_df = token_df.sort_values(
