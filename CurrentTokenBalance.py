@@ -33,7 +33,7 @@ class CurrentBalance:
 
         for wallet in self.address_lst:
             for chain in self.chain_lst.keys():
-                counter = 10
+                counter = 0
                 while counter < 10:
                     try:
                         url = f'https://api.covalenthq.com/v1/{chain}/address/{wallet}/balances_v2/?key={API_KEY}'
